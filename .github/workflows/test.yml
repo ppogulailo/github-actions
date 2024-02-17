@@ -1,0 +1,18 @@
+name: Test Project
+on:
+  - push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+        # Install Node.js not strict, Node.js already pre-installed on server, just need when you need for example set a newleast version
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version:  18
+      - name: Install Dependecies
+        run: npm ci
+      - name: Run tests
+        run: npm test
